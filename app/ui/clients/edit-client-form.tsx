@@ -7,15 +7,10 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/app/lib/firestore";
 import { UserCircleIcon, EnvelopeIcon, PhotoIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { Clients } from '@/app/lib/definitions';
 
-export type Client = {
-  id: string;
-  name: string;
-  email: string;
-  image_url: string;
-};
 
-export default function EditClientForm({ client }: { client: Client }) {
+export default function EditClientForm({ client }: { client: Clients }) {
   const [name, setName] = useState(client.name);
   const [email, setEmail] = useState(client.email);
   const [imageUrl, setImageUrl] = useState(client.image_url);
