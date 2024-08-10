@@ -1,8 +1,6 @@
 import ClientsTable from "@/app/ui/clients/table";
 import { Metadata } from "next";
 import { Suspense } from "react";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import { db } from "@/app/lib/firestore";
 import AddClientButton from "./addClient";
 
 export const metadata: Metadata = {
