@@ -8,10 +8,10 @@ import {
   LatestInvoicesSkeleton, 
   CardSkeleton 
 } from '@/app/ui/skeletons';
- 
+
 export default async function Page() {
     
-    return (
+  return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Dashboard
@@ -28,7 +28,7 @@ export default async function Page() {
 
         <Suspense fallback= {<LatestInvoicesSkeleton />} >
           <LatestInvoices />
-        </Suspense>
+        </Suspense>  
       </div>
     </main>
   );
