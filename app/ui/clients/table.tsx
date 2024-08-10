@@ -7,6 +7,7 @@ import {
 import { fetchFilteredCustomers } from '@/app/lib/data';
 import { getAllClients } from '@/app/lib/firestore-data';
 import { CreateClient } from '@/app/dashboard/clients/addClient';
+import { DeleteInvoice, UpdateInvoice } from '../invoices/buttons';
 
 export default async function ClientsTable({
   query,
@@ -87,6 +88,12 @@ export default async function ClientsTable({
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
                         {customer.email}
                       </td>
+                      <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                        <div className="flex justify-end gap-3">
+                            <UpdateInvoice id={customer.id} />
+                            <DeleteInvoice id={customer.id} />
+                        </div>
+                  </td>
                     </tr>
                   ))}
                 </tbody>
