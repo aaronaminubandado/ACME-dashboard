@@ -5,8 +5,8 @@ import {
   Clients,
 } from '@/app/lib/definitions';
 import { getAllClients } from '@/app/lib/firestore-data';
-import { CreateClient, UpdateClient } from '@/app/dashboard/clients/addClient';
-import { DeleteInvoice } from '../invoices/buttons';
+import { CreateClient, DeleteClient, UpdateClient } from '@/app/dashboard/clients/addClient';
+
 
 export default async function ClientsTable({
   query,
@@ -90,7 +90,7 @@ export default async function ClientsTable({
                       <td className="whitespace-nowrap py-3 pl-6 pr-3">
                         <div className="flex justify-end gap-3">
                             <UpdateClient id={customer.id} />
-                            <DeleteInvoice id={customer.id} />
+                            <DeleteClient id={customer.id} />
                         </div>
                   </td>
                     </tr>

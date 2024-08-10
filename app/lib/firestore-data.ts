@@ -1,6 +1,8 @@
+'use server';
 import { collection, deleteDoc, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "@/app/lib/firestore";
 import { Clients } from "./definitions";
+import { revalidatePath } from "next/cache";
 
 
 export async function getAllClients() {
@@ -66,7 +68,7 @@ export async function getClientById(id: string) {
   
       // Delete the document
       await deleteDoc(clientRef);
-  
+      revalidatePath("/dashboard/clients");
       console.log("Document successfully deleted!");
     } catch (error) {
       console.error("Error deleting document:", error);

@@ -6,6 +6,7 @@ import { db } from "@/app/lib/firestore";
 import { useState } from "react";
 import { PencilIcon, PlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { deleteClientById } from "@/app/lib/firestore-data";
 
 export default function AddClientButton() {
   const [isAdding, setIsAdding] = useState(false);
@@ -15,8 +16,8 @@ export default function AddClientButton() {
     try {
       const docRef = await addDoc(collection(db, "clients"),{
         name: 'Gene Wilson',
-    email: 'willygene@mailer.com',
-    image_url: '/customers/gene-wilson.png',
+        email: 'willygene@mailer.com',
+        image_url: '/customers/gene-wilson.png',
       });
       console.log("Document written with ID: ", docRef.id);
     } catch (error) {
@@ -64,15 +65,24 @@ export function CreateClient() {
     );
   }
   
-//   export function DeleteClient({ id }: { id: string }) {
-//     const deleteClientWithId = deleteInvoice.bind(null,id);
-  
-//     return (
-//       <form action={deleteInvoiceWithId}>
-//         <button className="rounded-md border p-2 hover:bg-gray-100">
-//           <span className="sr-only">Delete</span>
-//           <TrashIcon className="w-5" />
-//         </button>
-//       </form>
-//     );
-//   }
+  export function DeleteClient({ id }: { id: string }) {
+    
+    async function deleteClientWithId() {
+        try {
+          await deleteClientById(id);
+          
+          console.log(`Client with ID ${id} has been deleted.`);
+        } catch (error) {
+          console.error(`Failed to delete client with ID ${id}:`, error);
+        }
+    }
+      
+    return (
+      <form action={deleteClientWithId}>
+        <button className="rounded-md border p-2 hover:bg-gray-100">
+          <span className="sr-only">Delete</span>
+          <TrashIcon className="w-5" />
+        </button>
+      </form>
+    );
+  }
