@@ -92,7 +92,7 @@ export default async function ClientsTable({
                             <UpdateClient id={customer.id} />
                             <DeleteClient id={customer.id} />
                         </div>
-                  </td>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
