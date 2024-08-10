@@ -1,8 +1,10 @@
+"use client";
+
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/app/ui/button';
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/app/lib/firestore";
-import { useRouter } from 'next/router';
 import { UserCircleIcon, EnvelopeIcon, PhotoIcon } from '@heroicons/react/24/outline';
 
 export default function CreateClientForm() {
@@ -10,7 +12,7 @@ export default function CreateClientForm() {
   const [email, setEmail] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
-  const router = useRouter();
+  const router = useRouter(); // Corrected to use next/navigation
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

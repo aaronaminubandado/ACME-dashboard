@@ -1,8 +1,8 @@
-import Form from "@/app/ui/invoices/create-form";
 import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 import { fetchCustomers } from "@/app/lib/data";
 
 import { Metadata } from "next";
+import CreateClientForm from "@/app/ui/clients/client-form";
 
 export const metadata: Metadata = {
     title: 'Create Client',
@@ -23,7 +23,7 @@ export default async function page() {
                     },
                 ]}
             />
-            <Form customers={customers} />
+            < CreateClientForm />
         </main>
     );
 }
