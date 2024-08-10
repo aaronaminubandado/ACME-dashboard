@@ -6,6 +6,7 @@ import {
 } from '@/app/lib/definitions';
 import { fetchFilteredCustomers } from '@/app/lib/data';
 import { getAllClients } from '@/app/lib/firestore-data';
+import { CreateClient } from '@/app/dashboard/clients/addClient';
 
 export default async function ClientsTable({
   query,
@@ -19,7 +20,10 @@ export default async function ClientsTable({
       <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
         Clients
       </h1>
-      <Search placeholder="Search clients..." />
+      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+        <Search placeholder="Search clients..." />
+        <CreateClient/>
+      </div>
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">

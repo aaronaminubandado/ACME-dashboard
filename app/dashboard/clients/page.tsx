@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import AddClientButton from "./addClient";
 
 export const metadata: Metadata = {
-    title: 'Customers',
+    title: 'Clients',
   };
 
 
@@ -19,7 +19,6 @@ export default async function Page({
 
     return (
         <Suspense fallback={<p>Loading...</p>}>
-            <AddClientButton/>
             <ClientsTable query={query} />
         </Suspense>
     );
