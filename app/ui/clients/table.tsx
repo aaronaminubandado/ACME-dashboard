@@ -4,7 +4,7 @@ import Search from '@/app/ui/search';
 import {
   Clients,
 } from '@/app/lib/definitions';
-import { getAllClients } from '@/app/lib/firestore-data';
+import { getAllClients, getClientsByQuery } from '@/app/lib/firestore-data';
 import { CreateClient, DeleteClient, UpdateClient } from '@/app/dashboard/clients/addClient';
 
 
@@ -13,7 +13,8 @@ export default async function ClientsTable({
 }: {
   query: string;
 }) {
-  const customers: Clients[] = await getAllClients();
+  //const customers: Clients[] = await getAllClients();
+  const customers: Clients[] = await getClientsByQuery(query);
 
   return (
     <div className="w-full">

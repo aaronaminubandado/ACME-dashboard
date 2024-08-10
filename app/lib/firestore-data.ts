@@ -1,5 +1,5 @@
 'use server';
-import { collection, deleteDoc, doc, getDoc, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/app/lib/firestore";
 import { Clients } from "./definitions";
 import { revalidatePath } from "next/cache";
@@ -75,3 +75,45 @@ export async function getClientById(id: string) {
       throw Error("Error deleting document");
     }
   }
+
+  export async function getClientsByQuery(queryString: string) {
+    try {
+      const clientsRef = collection(db, "clients");
+  
+      // Create a query to search for clients by name or email
+      const clientsQuery = query(
+        clientsRef,
+        where("name", ">=", queryString),
+        where("name", "<=", queryString + '\uf8ff')
+      );
+  
+
+      // const clientsQuery = query(
+      //   clientsRef,
+      //   where("email", ">=", queryString),
+      //   where("email", "<=", queryString + '\uf8ff')
+      // );
+  
+      const querySnapshot = await getDocs(clientsQuery);
+  
+      if (querySnapshot.empty) {
+        console.log("No documents found matching the query.");
+        return [];
+      }
+  
+      const clients: Clients[] = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          name: data.name,
+          email: data.email,
+          image_url: data.image_url,
+        };
+      });
+  
+      return clients;
+    } catch (error) {
+      console.error("Error retrieving clients: ", error);
+      throw error; 
+  }
+} 
