@@ -2,17 +2,17 @@ import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
 import Search from '@/app/ui/search';
 import {
-  CustomersTableType,
-  FormattedCustomersTable,
+  Clients,
 } from '@/app/lib/definitions';
 import { fetchFilteredCustomers } from '@/app/lib/data';
+import { getAllClients } from '@/app/lib/firestore-data';
 
 export default async function ClientsTable({
   query,
 }: {
   query: string;
 }) {
-  const customers: FormattedCustomersTable[] = await fetchFilteredCustomers(query);
+  const customers: Clients[] = await getAllClients();
 
   return (
     <div className="w-full">
