@@ -1,6 +1,5 @@
 import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
-import { title } from 'process';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,7 +8,7 @@ export const metadata: Metadata = {
 	default: 'Acme Dashboard',
 	},
   description: 'Dashboard built with App Router',
-  metadataBase: new URL('http://next-learn-dashboard.vercel.sh'),
+  metadataBase: new URL('https://nextjs-dashboard-with-firestoredb.vercel.app'),
 }
 
 export default function RootLayout({
