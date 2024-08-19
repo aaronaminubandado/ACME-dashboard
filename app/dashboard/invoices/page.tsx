@@ -7,6 +7,10 @@ import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 import { fetchInvoicesPages } from "@/app/lib/data";
 import { Metadata } from "next";
+import { getTokens } from "next-firebase-auth-edge";
+import { cookies } from "next/headers";
+import { clientConfig, serverConfig } from "@/app/lib/firebase-config";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
     title: 'Invoices',

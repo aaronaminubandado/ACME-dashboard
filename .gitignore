@@ -34,3 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+nextjs-dashboard-9ffc3-firebase-adminsdk-yhawg-28f988fe4f.json

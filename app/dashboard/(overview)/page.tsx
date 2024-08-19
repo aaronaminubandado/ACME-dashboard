@@ -8,9 +8,25 @@ import {
   LatestInvoicesSkeleton, 
   CardSkeleton 
 } from '@/app/ui/skeletons';
+import { clientConfig, serverConfig } from '@/app/lib/firebase-config';
+import { getTokens } from 'next-firebase-auth-edge';
+import { cookies } from 'next/headers';
+import { notFound } from 'next/navigation';
 
 export default async function Page() {
     
+    const tokens = await getTokens(cookies(), {
+      apiKey: clientConfig.apiKey,
+      cookieName: serverConfig.cookieName,
+      cookieSignatureKeys: serverConfig.cookieSignatureKeys,
+      serviceAccount: serverConfig.serviceAccount,
+    });
+  
+    if (!tokens) {
+      console.error("Tokens not found:", tokens);
+      notFound();
+    }
+  
   return (
     <main>
       <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>

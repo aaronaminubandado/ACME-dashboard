@@ -140,3 +140,8 @@ export async function authenticate(
     }
     
 }
+
+export async function register() {
+    console.log("Form action works.");
+    return false;
+}
