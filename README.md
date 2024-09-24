@@ -1,5 +1,3 @@
-## Next.js App Router Course - Starter
+## Next.js Dashboard with Firestore Database
 
-This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
-
-For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+This repository contains the code for a dashboard built with Next.js. The project was initially based on Vercel's starter tutorial, with some key enhancements. Notably, the authentication system was switched from NextAuth to Firebase Authentication, and Firestore was integrated to support a new page added to the application.
